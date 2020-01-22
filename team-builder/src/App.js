@@ -26,23 +26,43 @@ const MemberDiv = styled.div`
 function App() {
   
   const [member, setMember] = useState(data);
-  console.log("App Component:", member);
+  
+  const [memberToEdit, setMemberToEdit] = useState()
 
   const addMember = newMember => {
     setMember([...member, newMember]);
   };
 
+  const memberEdit = edit => {
+    member.map((x) => {
+      if(x.id === edit.id){
+       setMember([...member, (member.x = edit)])
+      }
+      
+    })
+    
+  };
+
+  console.log(member[0]);
+
+  const editMember = (id, editName, editEmail, editRole) =>{
+    setMemberToEdit({id: id, name: editName, email: editEmail, role: editRole })
+
+  };
+
+  console.log(memberToEdit);
+
   return (
     <Container>
       <FormDiv>
         <h3>Add A New Member</h3>
-        <Form addMember={addMember}/>
+        <Form addMember={addMember} editMember={memberToEdit} memberEdit={memberEdit}/>
       </FormDiv> 
       <div>
         <h1>Team Members</h1>
         <MemberDiv>
           {member.map((x,index)=>(
-            <Members name={x.name} email={x.email} role={x.role} key={index} />
+            <Members id={x.id} name={x.name} email={x.email} role={x.role} edit={editMember} key={index} />
           ))} 
         </MemberDiv>
          

@@ -11,6 +11,7 @@ export default function Members(props){
             <h3>Name: {props.name}</h3>
             <p>Email: {props.email}</p>
             <p>Role: {props.role}</p>
+            <button onClick={() => props.edit(props.id, props.name, props.email, props.role)}>Edit</button>
         </MemberCard>
     );
 }

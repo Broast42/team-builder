@@ -33,24 +33,28 @@ function App() {
     setMember([...member, newMember]);
   };
 
-  const memberEdit = edit => {
-    member.map((x) => {
+  const memberEdit = edit => {    
+    member.map(x=> {
       if(x.id === edit.id){
-       setMember([...member, (member.x = edit)])
-      }
-      
-    })
-    
+        x.name = edit.name;
+        x.email = edit.email;
+        x.role = edit.role;
+        
+      };
+      setMember([...member]);
+    });
+    setMemberToEdit(null);
+    console.log(member);
   };
 
-  console.log(member[0]);
+  
 
   const editMember = (id, editName, editEmail, editRole) =>{
     setMemberToEdit({id: id, name: editName, email: editEmail, role: editRole })
 
   };
 
-  console.log(memberToEdit);
+  
 
   return (
     <Container>

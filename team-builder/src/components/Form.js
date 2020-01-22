@@ -11,11 +11,16 @@ export default function Form(props){
     const changeHandle = e => {
         setNewMember({ ...newMember, [e.target.name]: e.target.value})
     };
-
+    
+    
+    
     const submitHandle = e =>{
         e.preventDefault();
+        
         if(props.editMember){
-            props.memberEdit(newMember)     
+            props.memberEdit(newMember);
+            
+                
         }else{
            
             const makeMember = {
@@ -26,6 +31,9 @@ export default function Form(props){
         }
         
         setNewMember({name: "", email: "", role: ""});
+        
+        
+       
     };
 
     useEffect(()=>{
@@ -35,7 +43,7 @@ export default function Form(props){
         
     },[props.editMember]);
 
-    console.log(newMember)
+   
     
 
     return(
